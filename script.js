@@ -53,7 +53,7 @@ SearchBtn.addEventListener("click", () => {
         addRepos(userName);
 
     }).catch(error => {
-        if(!error){infoDiv.style.display=`flex`)}
+     
     })
 
 
