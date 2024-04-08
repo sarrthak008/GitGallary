@@ -34,7 +34,7 @@ SearchBtn.addEventListener("click", () => {
 
         if (resulte.name != null) {
             
-           infoDiv.style.display=`flex`
+           
             name.innerText = `Name: ${resulte.name}`
         } else {
             name.innerText = `Name: ${resulte.login}`
@@ -52,8 +52,8 @@ SearchBtn.addEventListener("click", () => {
 
         addRepos(userName);
 
-    }).catch(erroe => {
-        console.log(erroe)
+    }).catch(error => {
+        if(!error){infoDiv.style.display=`flex`)}
     })
 
 
