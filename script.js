@@ -26,9 +26,19 @@ SearchBtn.addEventListener("click", () => {
 
 
     fetch(url).then(resp => {
+        console.log(resp)
+
+        if(resp.status != 200){
+            infoDiv.style.display=`none` ;
+            alert(`Cant found user\nStatus Code ${resp.status}`)
+        }else{
+            infoDiv.style.display=`flex`
+        }
+
         return resp.json()
     }).then(resulte => {
-         console.log(resulte)
+         //console.log(resulte.status)
+     
         //adding info  into dom...
         profileImage.setAttribute("src", `${resulte.avatar_url}`);
 
@@ -52,8 +62,10 @@ SearchBtn.addEventListener("click", () => {
 
         addRepos(userName);
 
+
     }).catch(error => {
-     
+      
+        //console.log(error)
     })
 
 
@@ -61,7 +73,7 @@ SearchBtn.addEventListener("click", () => {
 })
 
 function addRepos(userName) {
-    console.log(userName)
+   // console.log(userName)
 
     url = `https://api.github.com/users/${userName}/repos`
     fetch(url).then(responce => {
@@ -110,7 +122,7 @@ function addRepos(userName) {
             Btn.addEventListener('click',()=>{window.open(`https://github.com/${userName}/${repo.name}`)})
                 RepoStyle.append(Btn)
 
-                console.log(RepoStyle)
+               // console.log(RepoStyle)
                 repos.appendChild(RepoStyle)
         
                 gitStatus(userName)
@@ -120,7 +132,7 @@ function addRepos(userName) {
         })
 
     }).catch(error => {
-            console.log(error)
+           // console.log(error)
         })
 
     })
